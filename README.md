@@ -1,10 +1,10 @@
-# 双 FPGA 视觉伺服系统 · 公开框架版
+# 双 FPGA 实时视觉伺服系统
 
-本仓库公开双 FPGA 视觉系统的采集、图像处理、显示、通信、存储和交互框架。系统由 A 板承担摄像头与视频处理，B 板承担数据接收及外设接口，外部串口触摸屏发送模式与参数指令，两板通过千兆以太网交换目标记录。
+本项目采用双 FPGA 协同架构，融合实时图像处理、目标识别、区域警戒与伺服跟踪，构建“感知—决策—通信—控制—反馈”的完整信息通路。A 板完成摄像头采集、ISP、多模式图像处理、红蓝规则目标与运动检测、ROI 协同 SAD 跟踪、图片存档和 HDMI 状态显示；B 板通过千兆以太网接收目标记录，协调 GM6020 双轴云台、移动底盘和语音告警。
 
-**本仓库采用部分源码公开方式。目标识别、模板跟踪、运动检测、云台闭环控制及丢失搜索的内部实现不在公开范围内。** 完整工程独立保存在私有仓库；本仓库从经过筛选的快照重新建立，未导入完整工程的 Git 历史。
+外部串口触摸屏统一下发模式与参数指令，支持警戒区域编辑、不同速度档位跟踪、视距保持及相册操作。系统结合目标新鲜度管理、编码器反馈与模式仲裁，实现图像感知和运动执行的协同，并通过 OSD 展示目标坐标、警戒状态及数字链路延迟。
 
-## 公开内容
+## 工程组成
 
 | 部分 | 内容 |
 |---|---|
@@ -14,54 +14,57 @@
 | 板间通信 | UART 指令、UDP 组包与接收、RGMII、MDIO、PHY 控制、跨域 FIFO 与复位同步 |
 | 警戒与存档框架 | 区域编辑、事件计时、告警显示、SD 原始扇区读写、照片管理与相册 UI |
 | B 板通用接口 | GM6020 CAN 通信驱动、基础 PWM、底盘运动解算、编码器采集、串口命令与语音接口 |
-| 核心接口 | 私有模块的端口声明及参数名称，方便了解集成边界；不含参数调校值和算法实现 |
+| 模块接口 | 端口声明与参数名称，用于说明视觉处理和控制模块的集成边界 |
 
-公开文件清单见 [PUBLIC_SCOPE.json](PUBLIC_SCOPE.json)。通用模块保留原有源码和版权注释，8 个独立 UART/反馈/语音模块从混合顶层文件中拆出，未公开该顶层的控制实现。
-
-## 未公开的核心
-
-- **颜色与形状识别**：颜色分割资格、形状统计、连通域筛选、定位与结果确认的内部实现。
-- **运动目标检测**：帧差/背景差、运动连通域及候选目标处理的内部实现。
-- **ROI 协同 SAD 跟踪**：模板捕获、搜索、评分、更新与恢复，以及配套计算和控制实现。
-- **云台与视觉控制**：几何映射、跟踪控制律、位置/模型控制、相关 PID、启动与回正协调、目标丢失搜索。
-- **混合顶层实现**：A/B 顶层内部含有算法配置和控制逻辑，因此仅提供接口说明，系统模块关系通过文档展示。
-- **历史与生成物**：不包含完整工程旧提交、测试参考实现、历史副本、仿真脚本、波形、网表、bitstream 或私人工程交接资料。
+文件清单见 [PUBLIC_SCOPE.json](PUBLIC_SCOPE.json)，模块依赖与集成条件见 [集成说明](docs/INTEGRATION.md)。通用模块保留原有源码和版权注释，独立 UART、反馈与语音模块集中在 `public_helpers/`。
 
 ## 系统通路
 
 ```mermaid
 flowchart TB
-  PANEL[外部串口触摸屏] --> AUART[A 板指令接收]
-  PANEL --> BUART[B 板指令接收]
-  subgraph A["A 板：摄像头、图像与显示框架"]
-    CAMERA[SC500CS 摄像头] --> RAW[RAW 解包与 ISP]
-    RAW --> IMAGE[通用图像处理]
-    RAW --> DETECT[私有：颜色形状与运动检测]
-    RAW --> TRACK[私有：ROI 协同 SAD]
-    DETECT --> REGION[区域与警戒状态]
-    TRACK --> REGION
-    REGION --> PHOTO[SD 照片与相册]
-    IMAGE --> DISPLAY[帧缓存接口与 HDMI OSD]
-    DETECT --> DISPLAY
-    TRACK --> DISPLAY
+  PANEL["外部串口触摸屏"]
+  subgraph A["A 板 · 实时视觉感知与图像显示"]
+    direction TB
+    AUART["串口指令与参数配置"]
+    CAMERA["SC500CS 摄像头"] --> RAW["RAW 解包与 ISP<br/>白平衡 · 自动曝光 · 去马赛克"]
+    RAW --> IMAGE["多模式图像处理<br/>滤波 · 边缘 · 色彩增强"]
+    RAW --> DETECT["目标检测<br/>红蓝颜色形状 · 运动区域"]
+    RAW --> TRACK["ROI 协同 SAD<br/>模板匹配与目标跟踪"]
+    DETECT --> RESULT["目标结果管理<br/>坐标 · 类别 · 新鲜度"]
+    TRACK --> RESULT
+    RESULT --> REGION["可编辑区域警戒<br/>入区判定 · 连续停留计时"]
+    REGION --> PHOTO["SD 图片存档与相册回放"]
+    IMAGE --> DISPLAY["帧缓存与 HDMI 显示<br/>目标框 · 状态 UI · 延迟统计"]
+    RESULT --> DISPLAY
+    REGION --> DISPLAY
     PHOTO --> DISPLAY
-    DETECT --> TX[UDP 目标记录发送]
-    TRACK --> TX
+    RESULT --> TX["UDP 目标数据发送"]
+    REGION --> TX
+    AUART --> IMAGE
     AUART --> REGION
-    AUART --> DISPLAY
+    AUART --> TRACK
+    AUART --> PHOTO
   end
-  subgraph B["B 板：接收与外设框架"]
-    RX[RGMII 与 UDP 接收] --> CTRL[私有：视觉控制、云台闭环与丢失搜索]
+  subgraph B["B 板 · 伺服控制与外设联动"]
+    direction TB
+    BUART["串口指令与模式选择"]
+    RX["RGMII 与 UDP 接收"] --> CTRL["目标与模式仲裁<br/>视觉控制 · 回正 · 丢失搜索"]
     BUART --> CTRL
-    CTRL --> CAN[GM6020 CAN 通信驱动]
-    CTRL --> CHASSIS[底盘接口、PWM 与编码器]
-    RX --> VOICE[语音事件接口]
+    CTRL --> CAN["CAN 通信与双轴云台"]
+    CAN --> MOTORS["两台 GM6020 电机"]
+    MOTORS --> FEEDBACK["位置与速度反馈"]
+    FEEDBACK --> CTRL
+    CTRL --> CHASSIS["视距保持与底盘控制<br/>四轮运动 · PWM · 编码器"]
+    RX --> VOICE["警戒事件与语音接口"]
     BUART --> VOICE
+    VOICE --> SU03T["SU-03T 语音告警"]
   end
-  TX --> RX
+  PANEL --> AUART
+  PANEL --> BUART
+  TX -->|"千兆以太网 · 目标坐标与状态"| RX
 ```
 
-该图说明完整系统中的模块职责和主要信息方向，私有核心仍是系统依赖，不表示所有连线对应同一时钟域或一拍直连。
+该图按 A 板视觉处理、B 板执行控制分层展示系统职责和主要信息方向；各链路的时钟域、缓冲与握手应结合具体接口核对。
 
 ## 目录
 
@@ -74,22 +77,20 @@ B_board/GM6020_test/
     public_helpers/              拆出的串口、反馈与语音模块
   io_config.adc                  B 板引脚配置快照
 interfaces/
-  A_board/                       A 板私有模块接口 JSON
-  B_board/                       B 板私有模块接口 JSON
+  A_board/                       A 板模块接口说明
+  B_board/                       B 板模块接口说明
 docs/
   INTEGRATION.md                 集成边界与使用条件
-PUBLIC_SCOPE.json                明确的公开与隐藏清单
+PUBLIC_SCOPE.json                文件范围与模块清单
 ```
 
 ## 使用与验证范围
 
 参考平台为 **PH1P35MDG324，速度等级 -3，Tang Dynasty 6.2.168116**。摄像头参考配置为 1280×720；实际帧率、像素格式、时钟与功能资格以相应源码为准。
 
-**公开框架版不是开箱即用的完整工程。** JSON 接口文件只描述端口和参数名称，没有实现，也不是可执行的 HDL 黑盒。使用者需要自行提供兼容核心，取得所需厂商 IP，再建立自己的工程清单与约束；不能直接用本仓库生成完整系统的 bitstream。
+构建前请按 [集成说明](docs/INTEGRATION.md) 补齐模块实现和所需厂商 IP，并建立与实际硬件一致的工程清单、时钟和接口约束。`interfaces/` 中的 JSON 用于接口描述，不是可执行 HDL。
 
-MIPI、DDR、HDMI、CAN、PLL 和部分 RAM/DSP 实例依赖目标器件及厂商工具。未随本仓库打包厂商加密/生成 IP 和第三方硬件资料，相关接口与依赖见 [集成说明](docs/INTEGRATION.md)。不要将示例引脚配置直接用于不同板卡。
-
-本次只完成源码筛选、接口提取、历史隔离与发布内容检查，未重新综合、布局布线或上板验证。内部延迟统计仅覆盖其定义的数字链路起止事件，不包含显示屏面板响应时间。
+本次发布完成文件与文档检查，未重新综合、布局布线或上板验证。内部延迟统计仅覆盖其定义的数字链路起止事件，不包含显示屏面板响应时间。
 
 ## FPGA 工程 skill
 
