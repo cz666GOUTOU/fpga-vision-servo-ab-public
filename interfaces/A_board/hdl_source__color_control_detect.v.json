@@ -1,0 +1,106 @@
+{
+  "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_control_detect.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "color_control_detect",
+      "parameter_names": [
+        "H_ACTIVE",
+        "V_ACTIVE",
+        "GUARD_FEATURE",
+        "PHOTO_FEATURE",
+        "SHARE_DISPLAY",
+        "CAMERA_HZ"
+      ],
+      "port_declarations": [
+        "input wire clk",
+        "rst_n",
+        "detect_en_async",
+        "input wire [95:0] rgb",
+        "input wire valid",
+        "user",
+        "last",
+        "output wire result_update",
+        "target_valid",
+        "output wire [15:0] target_id",
+        "center_x",
+        "center_y",
+        "output reg protocol_error",
+        "input wire [7:0] guard_epoch_async",
+        "output wire [52:0] guard_record",
+        "input wire [15:0] photo_frame_id",
+        "output wire [15:0] photo_record",
+        "output wire display_update",
+        "output wire [104:0] display_record"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "color_shared_display",
+      "parameter_names": [],
+      "port_declarations": [
+        "input wire camera_clk",
+        "camera_rst_n",
+        "candidate_update",
+        "input wire [104:0] candidate_record",
+        "input wire ddr_clk",
+        "ddr_rst_n",
+        "read_start",
+        "write_start",
+        "input wire [1:0] read_slot",
+        "write_slot",
+        "input wire [63:0] slot_ids",
+        "input wire [3:0] slot_good",
+        "input wire pixel_clk",
+        "pixel_rst_n",
+        "vsync",
+        "first_pixel",
+        "enable",
+        "output reg [1:0] box_valid",
+        "seen",
+        "output reg [67:0] boxes",
+        "output reg result_update",
+        "output reg latency_update",
+        "latency_valid",
+        "output reg [13:0] latency_ticks",
+        "output reg overflow",
+        "output reg frame_matched",
+        "output reg [15:0] displayed_id",
+        "output wire source_frame_good"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "color_control_result_cdc",
+      "parameter_names": [
+        "GUARD_FEATURE",
+        "PHOTO_FEATURE"
+      ],
+      "port_declarations": [
+        "input wire wr_clk",
+        "wr_rst_n",
+        "result_update",
+        "target_valid",
+        "input wire [15:0] target_id",
+        "center_x",
+        "center_y",
+        "input wire rd_clk",
+        "rd_rst_n",
+        "output reg out_update",
+        "out_valid",
+        "output reg [15:0] out_id",
+        "out_x",
+        "out_y",
+        "output reg overflow",
+        "input wire [52:0] guard_record",
+        "output reg [52:0] out_guard_record",
+        "input wire [15:0] photo_record",
+        "output reg [15:0] out_photo_record"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

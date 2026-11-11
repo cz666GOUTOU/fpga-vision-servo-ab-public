@@ -1,0 +1,135 @@
+{
+  "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_multi_ccl.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "zhencha_multi_ccl",
+      "parameter_names": [
+        "H_ACTIVE",
+        "V_ACTIVE",
+        "DS",
+        "THRESH",
+        "MIN_AREA",
+        "MAX_TRACK",
+        "LABELS",
+        "HOLD_FRAMES",
+        "MATCH_GAP",
+        "TRACK_MIN_AREA",
+        "MERGE_GAP",
+        "JUMP_LIMIT",
+        "GAIN_SETTLE_FRAMES"
+      ],
+      "port_declarations": [
+        "input clk",
+        "rst_n",
+        "detect_en",
+        "pre_frame_vsync",
+        "pre_frame_de",
+        "input [23:0] pre_rgb",
+        "output reg [3:0] box_valid",
+        "output reg [35:0] box_xmin",
+        "box_xmax",
+        "output reg [31:0] box_ymin",
+        "box_ymax",
+        "output reg overflow",
+        "input wire gain_change",
+        "output reg result_update",
+        "output wire result_ready",
+        "output reg [1:0] result_fresh"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "motion_light_hysteresis",
+      "parameter_names": [
+        "W",
+        "H",
+        "HIGH",
+        "LOW"
+      ],
+      "port_declarations": [
+        "input clk",
+        "rst_n",
+        "boundary",
+        "in_valid",
+        "input [8:0] in_x",
+        "input [7:0] in_y",
+        "input [7:0] gray",
+        "background",
+        "input exclude",
+        "output reg out_valid",
+        "output reg [8:0] out_x",
+        "output reg [7:0] out_y",
+        "output reg out_bit"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "motion_bit_window",
+      "parameter_names": [
+        "W",
+        "H",
+        "OP",
+        "TAIL_GAP",
+        "ERAM_ROWS"
+      ],
+      "port_declarations": [
+        "input clk",
+        "rst_n",
+        "in_valid",
+        "input [8:0] in_x",
+        "input [7:0] in_y",
+        "input in_bit",
+        "output reg out_valid",
+        "output reg [8:0] out_x",
+        "output reg [7:0] out_y",
+        "output reg out_bit"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "motion_gray_block4",
+      "parameter_names": [
+        "H_ACTIVE",
+        "V_ACTIVE"
+      ],
+      "port_declarations": [
+        "input clk",
+        "rst_n",
+        "frame_vsync",
+        "in_valid",
+        "input [10:0] in_x",
+        "input [9:0] in_y",
+        "input [7:0] in_gray",
+        "output reg out_valid",
+        "output reg [8:0] out_x",
+        "output reg [7:0] out_y",
+        "output reg [7:0] out_gray"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    },
+    {
+      "module": "motion_gain_change_cdc",
+      "parameter_names": [],
+      "port_declarations": [
+        "input I_cam_clk",
+        "I_cam_rst_n",
+        "I_cam_cfg_done",
+        "I_ae_req",
+        "I_ae_cfg_done",
+        "I_iic_error",
+        "input [15:0] I_submitted_ag",
+        "input I_hdmi_clk",
+        "I_hdmi_rst_n",
+        "I_hdmi_vsync",
+        "output wire O_restart"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

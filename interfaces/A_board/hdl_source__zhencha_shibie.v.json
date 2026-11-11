@@ -1,0 +1,35 @@
+{
+  "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_shibie.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "zhencha_shibie",
+      "parameter_names": [
+        "H_ACTIVE",
+        "V_ACTIVE",
+        "DS",
+        "THRESH",
+        "MIN_AREA"
+      ],
+      "port_declarations": [
+        "input clk",
+        "input rst_n",
+        "input detect_en",
+        "input pre_frame_vsync",
+        "input pre_frame_de",
+        "input [23:0] pre_rgb",
+        "output reg box_valid",
+        "output reg [8:0] box_tl_x",
+        "output reg [7:0] box_tl_y",
+        "output reg [8:0] box_tr_x",
+        "output reg [7:0] box_tr_y",
+        "output reg [8:0] box_bl_x",
+        "output reg [7:0] box_bl_y",
+        "output reg [8:0] box_br_x",
+        "output reg [7:0] box_br_y"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

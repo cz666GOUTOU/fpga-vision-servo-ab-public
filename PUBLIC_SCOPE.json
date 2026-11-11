@@ -1,0 +1,271 @@
+{
+  "edition": "public-framework",
+  "snapshot_date": "2026-11-11",
+  "build_status": "requires separately supplied private cores and vendor IP",
+  "open_source_files": [
+    "A_board/lab_ex3_osd/user_source/hdl_source/I2S_receiver.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/anlogic_logo_rom.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/audio_arc_calculate.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/auto_exposure_status_cdc.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/auto_white_balance.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/awb.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/camera_auto_exposure.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/csi_unpacket.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/dakuang.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/data_96bit_to_128bit.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/guard_mode_controller.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/guard_photo_capture.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/hdmi_mixer.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/hdmi_phy_warpper.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/hdmi_tx.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/image_correction.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/lane_lvds_10_1.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/mc_to_user_interface.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/mipi_rx_error_detect.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/osd_char_lib.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/photo_album_osd.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/photo_ddr_arbiter.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/pll_hdmi.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/ps_wrapper.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_ae_stats.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_auto_gain.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_dgain.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_lsc.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_lsc_config.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw10_unpacket.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/raw8_to_rgb888.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/rgb_contrast.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/rgb_saturation.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/sd_photo_spi.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/sd_photo_store.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/signal_delay.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uart_command_rx.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/video_cuttting.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/video_eth_pll.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/video_in.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/video_out.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/video_power_reset.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/vision.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/BLC/BLC.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/awb/awb.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/awb/signal_delay.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/csi_unpacket_2lane.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/bilinear_interpolation.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/demosaic.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/line_buffer_demosaic.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/mipi_to_raw_converter.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/raw_matrix_3x3_buffer.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/demosaic_4x_2_0/zhenghe.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/isp_top.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/raw10_unpacket_2lane.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/isp/uial2axis.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uial2axis/uial2axis.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/SC500GainTbl.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uicfgcs500.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uicfgcs500_720p.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uics500reg.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uics500regAE.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uics500reg_720p60.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics500_cfg/uii2c.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics520_cfg/SC520GainTbl.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics520_cfg/uicfgcs520.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics520_cfg/uics520regAE.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uics520_cfg/uics520reg_720p60.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uiisp_beta/ae_set.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uiisp_beta/csi_unpacket_2lane.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/uiisp_beta/raw10_unpacket_2lane.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/vtc/uivtc.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_async_fifo.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_eth_rx.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_eth_tx.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_mdio_master.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_reset_sync.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_rgmii_ph1p.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_udp_rx_core.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_udp_tx_core.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/target_eth_udp/target_yt8511_ctrl.v",
+    "B_board/GM6020_test/user_source/GM6020.v",
+    "B_board/GM6020_test/user_source/car.v",
+    "B_board/GM6020_test/user_source/motor.v",
+    "B_board/GM6020_test/user_source/vision_u64_div32.v",
+    "B_board/GM6020_test/user_source/ethernet/ethernet_rx.v",
+    "B_board/GM6020_test/user_source/ethernet/ph1p_phy_pll_wrapper_25a56e5ce2f9.v",
+    "B_board/GM6020_test/user_source/ethernet/qzw_clk125.v",
+    "B_board/GM6020_test/user_source/ethernet/target_async_fifo.v",
+    "B_board/GM6020_test/user_source/ethernet/target_eth_rx.v",
+    "B_board/GM6020_test/user_source/ethernet/target_mdio_master.v",
+    "B_board/GM6020_test/user_source/ethernet/target_reset_sync.v",
+    "B_board/GM6020_test/user_source/ethernet/target_rgmii_ph1p.v",
+    "B_board/GM6020_test/user_source/ethernet/target_udp_rx_core.v",
+    "B_board/GM6020_test/user_source/ethernet/target_yt8511_ctrl.v",
+    "A_board/lab_ex3_osd/user_source/constraints_source/pin.adc",
+    "B_board/GM6020_test/io_config.adc"
+  ],
+  "extracted_public_helpers": [
+    "B_board/GM6020_test/user_source/public_helpers/chassis_encoder_ab.v",
+    "B_board/GM6020_test/user_source/public_helpers/uart_gimbal_manual.v",
+    "B_board/GM6020_test/user_source/public_helpers/uart_region_store.v",
+    "B_board/GM6020_test/user_source/public_helpers/uart_guard_report.v",
+    "B_board/GM6020_test/user_source/public_helpers/guard_voice_control.v",
+    "B_board/GM6020_test/user_source/public_helpers/uart_voice_tx.v",
+    "B_board/GM6020_test/user_source/public_helpers/uart_home_report.v",
+    "B_board/GM6020_test/user_source/public_helpers/tof_uart_rx.v"
+  ],
+  "withheld_components": [
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_ccl_pipeline.v",
+      "interface_path": "interfaces/A_board/hdl_source__color_ccl_pipeline.v.json",
+      "modules": [
+        "color_ccl_pipeline"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_control_detect.v",
+      "interface_path": "interfaces/A_board/hdl_source__color_control_detect.v.json",
+      "modules": [
+        "color_control_detect",
+        "color_shared_display",
+        "color_control_result_cdc"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/yanseshibie.v",
+      "interface_path": "interfaces/A_board/hdl_source__yanseshibie.v.json",
+      "modules": [
+        "yanseshibie",
+        "color_mask_row_ram",
+        "color_shape_stats"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_multi_ccl.v",
+      "interface_path": "interfaces/A_board/hdl_source__zhencha_multi_ccl.v.json",
+      "modules": [
+        "zhencha_multi_ccl",
+        "motion_light_hysteresis",
+        "motion_bit_window",
+        "motion_gray_block4",
+        "motion_gain_change_cdc"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_shibie.v",
+      "interface_path": "interfaces/A_board/hdl_source__zhencha_shibie.v.json",
+      "modules": [
+        "zhencha_shibie"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/design_top_wrapper.v",
+      "interface_path": "interfaces/A_board/hdl_source__design_top_wrapper.v.json",
+      "modules": [
+        "design_top_wrapper"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_dsp_addsub54.v",
+      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_dsp_addsub54.v.json",
+      "modules": [
+        "a38_dsp_addsub54"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_local_control.v",
+      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_local_control.v.json",
+      "modules": [
+        "a38_local_control"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_sad16_capture.v",
+      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_sad16_capture.v.json",
+      "modules": [
+        "a38_sad16_capture"
+      ]
+    },
+    {
+      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_sad16_core.v",
+      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_sad16_core.v.json",
+      "modules": [
+        "a38_sad16_core",
+        "a38_learning_rom"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/GM6020_id2_model_ctrl.v",
+      "interface_path": "interfaces/B_board/GM6020_id2_model_ctrl.v.json",
+      "modules": [
+        "GM6020_id2_model_ctrl",
+        "GM6020_dual_model_ctrl"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/GM6020_pos_ctrl.v",
+      "interface_path": "interfaces/B_board/GM6020_pos_ctrl.v.json",
+      "modules": [
+        "GM6020_pos_ctrl"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/pid_ctrl.v",
+      "interface_path": "interfaces/B_board/pid_ctrl.v.json",
+      "modules": [
+        "pid_ctrl"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/vision_axis_pid.v",
+      "interface_path": "interfaces/B_board/vision_axis_pid.v.json",
+      "modules": [
+        "vision_axis_pid"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/vision_geometry_map.v",
+      "interface_path": "interfaces/B_board/vision_geometry_map.v.json",
+      "modules": [
+        "vision_geometry_map"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/vision_nonlinear_ctrl.v",
+      "interface_path": "interfaces/B_board/vision_nonlinear_ctrl.v.json",
+      "modules": [
+        "vision_nonlinear_ctrl"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/vision_xy_pid.v",
+      "interface_path": "interfaces/B_board/vision_xy_pid.v.json",
+      "modules": [
+        "vision_xy_pid"
+      ]
+    },
+    {
+      "source_path": "B_board/GM6020_test/user_source/top.v",
+      "interface_path": "interfaces/B_board/top.v.json",
+      "modules": [
+        "top",
+        "gimbal_startup_home",
+        "gimbal_sine_search",
+        "chassis_heading_control",
+        "sight_distance_control",
+        "chassis_hal_wheel_speed",
+        "chassis_wheel_speed",
+        "chassis_uart_control",
+        "gimbal_manual_step",
+        "feature_region_limit",
+        "feature_guard_return",
+        "feature_region_status",
+        "chassis_four_wheel_shared"
+      ]
+    }
+  ],
+  "excluded": [
+    "all historical tests, reference implementations and backups",
+    "full mixed integration source bodies",
+    "original Git history and private project context",
+    "bitstreams, netlists, waveforms and build products",
+    "vendor generated/encrypted IP payloads and third-party documents"
+  ]
+}

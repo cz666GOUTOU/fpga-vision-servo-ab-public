@@ -1,0 +1,53 @@
+{
+  "source_path": "B_board/GM6020_test/user_source/vision_nonlinear_ctrl.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "vision_nonlinear_ctrl",
+      "parameter_names": [
+        "CLK_HZ",
+        "DELAY_MS",
+        "UPDATE_MS",
+        "ACQUIRE_MS",
+        "RX_TIMEOUT_MS",
+        "DEADBAND_PIXELS",
+        "INVALID_GRACE_MS"
+      ],
+      "port_declarations": [
+        "input wire clk",
+        "rst_n",
+        "enable",
+        "manual_override",
+        "input wire [1:0] tracking_mode",
+        "input wire result_update",
+        "target_valid",
+        "comm_timeout",
+        "clear_history",
+        "source_change",
+        "input wire [15:0] center_x",
+        "center_y",
+        "setpoint_x",
+        "setpoint_y",
+        "input wire feedback_ready1",
+        "feedback_ready2",
+        "input wire signed [31:0] position1",
+        "position2",
+        "output reg command_valid",
+        "hold",
+        "tracking",
+        "busy",
+        "output reg signed [31:0] target1",
+        "target2",
+        "velocity1_q16",
+        "velocity2_q16",
+        "output reg signed [31:0] predicted_x_q16",
+        "predicted_y_q16",
+        "output reg signed [31:0] error_x_q16",
+        "error_y_q16",
+        "output reg [3:0] hold_reason"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

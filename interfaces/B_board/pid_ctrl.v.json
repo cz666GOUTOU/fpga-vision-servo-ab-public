@@ -1,0 +1,31 @@
+{
+  "source_path": "B_board/GM6020_test/user_source/pid_ctrl.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "pid_ctrl",
+      "parameter_names": [
+        "CLK_HZ",
+        "INTEGRAL_HZ",
+        "MAX_OUT",
+        "MIN_OUT",
+        "INTEGRAL_LIMIT",
+        "KP",
+        "KI",
+        "KD",
+        "KF",
+        "EXTERNAL_SAMPLE"
+      ],
+      "port_declarations": [
+        "input wire clk",
+        "input wire rst_n",
+        "input wire signed [15:0] target",
+        "input wire signed [15:0] value",
+        "output reg signed [15:0] out",
+        "input wire sample_valid"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

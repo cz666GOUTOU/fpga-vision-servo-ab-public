@@ -1,0 +1,32 @@
+{
+  "source_path": "B_board/GM6020_test/user_source/vision_axis_pid.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "vision_axis_pid",
+      "parameter_names": [
+        "KP_Q8",
+        "KI_Q8",
+        "KD_Q8",
+        "ERROR_REVERSE",
+        "OUTPUT_LIMIT",
+        "INTEGRAL_LIMIT",
+        "DEADBAND_PIXELS"
+      ],
+      "port_declarations": [
+        "input wire clk",
+        "rst_n",
+        "input wire enable",
+        "input wire sample_valid",
+        "input wire clear_history",
+        "input wire [15:0] setpoint",
+        "measurement",
+        "output reg output_valid",
+        "output reg signed [15:0] control",
+        "output reg signed [16:0] error_pixels"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}

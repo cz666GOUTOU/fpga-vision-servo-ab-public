@@ -1,0 +1,49 @@
+{
+  "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_ccl_pipeline.v",
+  "status": "INTERFACE_ONLY_NOT_A_FUNCTIONAL_CORE",
+  "modules": [
+    {
+      "module": "color_ccl_pipeline",
+      "parameter_names": [
+        "SHAPE",
+        "MIN_PIXELS",
+        "MIN_SIDE",
+        "MIN_WIDTH",
+        "MAX_WIDTH",
+        "MIN_HEIGHT",
+        "MAX_HEIGHT",
+        "CONFIRM_FRAMES",
+        "GRID_WIDTH",
+        "GRID_HEIGHT",
+        "REQUIRE_SEED",
+        "MIN_STRONG_PIXELS",
+        "SEED_RATIO_SHIFT",
+        "SEPARATE_CONFIRM"
+      ],
+      "port_declarations": [
+        "input clk",
+        "rst_n",
+        "enable",
+        "boundary",
+        "de",
+        "sample",
+        "hit",
+        "line_end",
+        "input strong_hit",
+        "input [8:0] x",
+        "input [7:0] y",
+        "output reg valid",
+        "update",
+        "output reg [8:0] out_xmin",
+        "out_xmax",
+        "output reg [7:0] out_ymin",
+        "out_ymax",
+        "output reg frame_good",
+        "input confirm_enable",
+        "output wire [33:0] candidate_box"
+      ],
+      "implementation": "withheld",
+      "parameter_defaults": "withheld"
+    }
+  ]
+}
