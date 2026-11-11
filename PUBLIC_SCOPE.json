@@ -1,8 +1,7 @@
 {
-  "edition": "public-framework",
+  "edition": "vision-servo-framework",
   "snapshot_date": "2026-11-11",
-  "build_status": "requires separately supplied private cores and vendor IP",
-  "open_source_files": [
+  "source_files": [
     "A_board/lab_ex3_osd/user_source/hdl_source/I2S_receiver.v",
     "A_board/lab_ex3_osd/user_source/hdl_source/anlogic_logo_rom.v",
     "A_board/lab_ex3_osd/user_source/hdl_source/audio_arc_calculate.v",
@@ -101,7 +100,7 @@
     "A_board/lab_ex3_osd/user_source/constraints_source/pin.adc",
     "B_board/GM6020_test/io_config.adc"
   ],
-  "extracted_public_helpers": [
+  "helper_modules": [
     "B_board/GM6020_test/user_source/public_helpers/chassis_encoder_ab.v",
     "B_board/GM6020_test/user_source/public_helpers/uart_gimbal_manual.v",
     "B_board/GM6020_test/user_source/public_helpers/uart_region_store.v",
@@ -111,161 +110,21 @@
     "B_board/GM6020_test/user_source/public_helpers/uart_home_report.v",
     "B_board/GM6020_test/user_source/public_helpers/tof_uart_rx.v"
   ],
-  "withheld_components": [
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_ccl_pipeline.v",
-      "interface_path": "interfaces/A_board/hdl_source__color_ccl_pipeline.v.json",
-      "modules": [
-        "color_ccl_pipeline"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/color_control_detect.v",
-      "interface_path": "interfaces/A_board/hdl_source__color_control_detect.v.json",
-      "modules": [
-        "color_control_detect",
-        "color_shared_display",
-        "color_control_result_cdc"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/yanseshibie.v",
-      "interface_path": "interfaces/A_board/hdl_source__yanseshibie.v.json",
-      "modules": [
-        "yanseshibie",
-        "color_mask_row_ram",
-        "color_shape_stats"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_multi_ccl.v",
-      "interface_path": "interfaces/A_board/hdl_source__zhencha_multi_ccl.v.json",
-      "modules": [
-        "zhencha_multi_ccl",
-        "motion_light_hysteresis",
-        "motion_bit_window",
-        "motion_gray_block4",
-        "motion_gain_change_cdc"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/zhencha_shibie.v",
-      "interface_path": "interfaces/A_board/hdl_source__zhencha_shibie.v.json",
-      "modules": [
-        "zhencha_shibie"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/design_top_wrapper.v",
-      "interface_path": "interfaces/A_board/hdl_source__design_top_wrapper.v.json",
-      "modules": [
-        "design_top_wrapper"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_dsp_addsub54.v",
-      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_dsp_addsub54.v.json",
-      "modules": [
-        "a38_dsp_addsub54"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_local_control.v",
-      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_local_control.v.json",
-      "modules": [
-        "a38_local_control"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_sad16_capture.v",
-      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_sad16_capture.v.json",
-      "modules": [
-        "a38_sad16_capture"
-      ]
-    },
-    {
-      "source_path": "A_board/lab_ex3_osd/user_source/hdl_source/mode38_local/a38_sad16_core.v",
-      "interface_path": "interfaces/A_board/hdl_source__mode38_local__a38_sad16_core.v.json",
-      "modules": [
-        "a38_sad16_core",
-        "a38_learning_rom"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/GM6020_id2_model_ctrl.v",
-      "interface_path": "interfaces/B_board/GM6020_id2_model_ctrl.v.json",
-      "modules": [
-        "GM6020_id2_model_ctrl",
-        "GM6020_dual_model_ctrl"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/GM6020_pos_ctrl.v",
-      "interface_path": "interfaces/B_board/GM6020_pos_ctrl.v.json",
-      "modules": [
-        "GM6020_pos_ctrl"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/pid_ctrl.v",
-      "interface_path": "interfaces/B_board/pid_ctrl.v.json",
-      "modules": [
-        "pid_ctrl"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/vision_axis_pid.v",
-      "interface_path": "interfaces/B_board/vision_axis_pid.v.json",
-      "modules": [
-        "vision_axis_pid"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/vision_geometry_map.v",
-      "interface_path": "interfaces/B_board/vision_geometry_map.v.json",
-      "modules": [
-        "vision_geometry_map"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/vision_nonlinear_ctrl.v",
-      "interface_path": "interfaces/B_board/vision_nonlinear_ctrl.v.json",
-      "modules": [
-        "vision_nonlinear_ctrl"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/vision_xy_pid.v",
-      "interface_path": "interfaces/B_board/vision_xy_pid.v.json",
-      "modules": [
-        "vision_xy_pid"
-      ]
-    },
-    {
-      "source_path": "B_board/GM6020_test/user_source/top.v",
-      "interface_path": "interfaces/B_board/top.v.json",
-      "modules": [
-        "top",
-        "gimbal_startup_home",
-        "gimbal_sine_search",
-        "chassis_heading_control",
-        "sight_distance_control",
-        "chassis_hal_wheel_speed",
-        "chassis_wheel_speed",
-        "chassis_uart_control",
-        "gimbal_manual_step",
-        "feature_region_limit",
-        "feature_guard_return",
-        "feature_region_status",
-        "chassis_four_wheel_shared"
-      ]
-    }
+  "module_interfaces": [
+    "interfaces/A_board/hdl_source__mode38_local__a38_sad16_core.v.json",
+    "interfaces/A_board/hdl_source__yanseshibie.v.json",
+    "interfaces/A_board/hdl_source__zhencha_multi_ccl.v.json",
+    "interfaces/B_board/vision_nonlinear_ctrl.v.json"
   ],
-  "excluded": [
-    "all historical tests, reference implementations and backups",
-    "full mixed integration source bodies",
-    "original Git history and private project context",
-    "bitstreams, netlists, waveforms and build products",
-    "vendor generated/encrypted IP payloads and third-party documents"
+  "structure_sources": [
+    "A_board/lab_ex3_osd/user_source/hdl_source/core_outline/yanseshibie.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/core_outline/zhencha_multi_ccl.v",
+    "A_board/lab_ex3_osd/user_source/hdl_source/core_outline/a38_sad16_core.v",
+    "B_board/GM6020_test/user_source/core_outline/vision_nonlinear_ctrl.v"
+  ],
+  "dependencies": [
+    "target FPGA vendor IP",
+    "application module configuration",
+    "project clock and interface constraints"
   ]
 }

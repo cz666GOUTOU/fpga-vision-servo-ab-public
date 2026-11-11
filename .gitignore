@@ -30,7 +30,7 @@
 *.pem
 *.key
 
-# Closed implementations: add public interface metadata under interfaces/ instead.
+# Keep original integration locations separate from the reviewed structure directory.
 /A_board/lab_ex3_osd/user_source/hdl_source/color_ccl_pipeline.v
 /A_board/lab_ex3_osd/user_source/hdl_source/color_control_detect.v
 /A_board/lab_ex3_osd/user_source/hdl_source/yanseshibie.v

@@ -14,7 +14,8 @@
 | 板间通信 | UART 指令、UDP 组包与接收、RGMII、MDIO、PHY 控制、跨域 FIFO 与复位同步 |
 | 警戒与存档框架 | 区域编辑、事件计时、告警显示、SD 原始扇区读写、照片管理与相册 UI |
 | B 板通用接口 | GM6020 CAN 通信驱动、基础 PWM、底盘运动解算、编码器采集、串口命令与语音接口 |
-| 模块接口 | 端口声明与参数名称，用于说明视觉处理和控制模块的集成边界 |
+| 主模块结构 | 颜色形状、运动检测、SAD 跟踪与视觉控制的输入、准备、评估及结果整理阶段 |
+| 模块接口 | 端口方向、声明位宽与信号名称，方便核对模块连接 |
 
 文件清单见 [PUBLIC_SCOPE.json](PUBLIC_SCOPE.json)，模块依赖与集成条件见 [集成说明](docs/INTEGRATION.md)。通用模块保留原有源码和版权注释，独立 UART、反馈与语音模块集中在 `public_helpers/`。
 
@@ -71,9 +72,11 @@ flowchart TB
 ```text
 A_board/lab_ex3_osd/user_source/
   hdl_source/                     采集、ISP、通用图像、显示、通信和 SD 框架
+    core_outline/                视觉主模块结构
   constraints_source/pin.adc      A 板引脚配置快照
 B_board/GM6020_test/
   user_source/                   CAN、PWM、底盘通用接口及 Ethernet
+    core_outline/                视觉控制主模块结构
     public_helpers/              拆出的串口、反馈与语音模块
   io_config.adc                  B 板引脚配置快照
 interfaces/
@@ -88,7 +91,7 @@ PUBLIC_SCOPE.json                文件范围与模块清单
 
 参考平台为 **PH1P35MDG324，速度等级 -3，Tang Dynasty 6.2.168116**。摄像头参考配置为 1280×720；实际帧率、像素格式、时钟与功能资格以相应源码为准。
 
-构建前请按 [集成说明](docs/INTEGRATION.md) 补齐模块实现和所需厂商 IP，并建立与实际硬件一致的工程清单、时钟和接口约束。`interfaces/` 中的 JSON 用于接口描述，不是可执行 HDL。
+构建前请按 [集成说明](docs/INTEGRATION.md) 配置模块、厂商 IP、工程清单、时钟和接口约束，并逐项检查代码注释中的使用条件。`interfaces/` 中的 JSON 用于接口索引，不参与 HDL 编译。
 
 本次发布完成文件与文档检查，未重新综合、布局布线或上板验证。内部延迟统计仅覆盖其定义的数字链路起止事件，不包含显示屏面板响应时间。
 
