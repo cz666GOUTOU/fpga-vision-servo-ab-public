@@ -1,0 +1,67 @@
+set_pin_assignment	{ I_rst_n }	{ LOCATION = D11; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment	{ I_sys_clk }	{ LOCATION = C4; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+# Request low idle bias for all chassis driver inputs. Configuration-time
+# protection still requires external PWM pull-downs or a driver enable gate.
+set_pin_assignment	{ M_NEG_fl }	{ LOCATION = P10; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_NEG_fr }	{ LOCATION = U4; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_NEG_rl }	{ LOCATION = L16; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_NEG_rr }	{ LOCATION = V7; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_POS_fl }	{ LOCATION = L15; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_POS_fr }	{ LOCATION = U6; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_POS_rl }	{ LOCATION = K13; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ M_POS_rr }	{ LOCATION = U5; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ PWM_OUT_fl }	{ LOCATION = P8; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ PWM_OUT_fr }	{ LOCATION = V6; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ PWM_OUT_rl }	{ LOCATION = P9; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ PWM_OUT_rr }	{ LOCATION = V4; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+# Both TB6612 STBY pins share B14. Remove the former direct 3.3 V connection.
+# Use an external STBY-to-GND pull-down for the pre-configuration interval.
+set_pin_assignment { O_chassis_stby } { LOCATION = F14; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ LED13_GREEN_N }	{ LOCATION = A14; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+set_pin_assignment	{ can_rxd }	{ LOCATION = V1; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { I_uart_rx } { LOCATION = E12; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { I_tof_uart_rx } { LOCATION = U2; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { O_uart_tx } { LOCATION = E16; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+# Speech module RX connects to this independent FPGA TX, 115200 8N1.
+set_pin_assignment { O_voice_tx } { LOCATION = T3; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLUP; }
+# Active-high laser enable; inactive/reset requests low.
+set_pin_assignment { laser_en } { LOCATION = U1; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment	{ can_txd }	{ LOCATION = V2; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+set_pin_assignment	{ key1 }	{ LOCATION = D5; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment	{ key2 }	{ LOCATION = A9; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment	{ key3 }	{ LOCATION = B9; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment	{ key4 }	{ LOCATION = C7; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+
+# Ethernet RGMII and diagnostic LEDs, from qzwtest board constraints.
+set_pin_assignment { I_eth_rx_clk }   { LOCATION = V3;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { I_eth_rxd[0] }    { LOCATION = N9;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { I_eth_rxd[1] }    { LOCATION = T7;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { I_eth_rxd[2] }    { LOCATION = T8;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { I_eth_rxd[3] }    { LOCATION = T9;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { I_eth_rx_ctl }    { LOCATION = N8;  IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_txd[0] }    { LOCATION = R11; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_txd[1] }    { LOCATION = P11; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_txd[2] }    { LOCATION = T10; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_txd[3] }    { LOCATION = R12; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_tx_ctl }   { LOCATION = R10; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_tx_clk }   { LOCATION = U9;  IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 16; PULLTYPE = NONE; OUTDEL = 3; }
+set_pin_assignment { O_phy_reset_n }  { LOCATION = V8;  IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+set_pin_assignment { O_eth_mdc }      { LOCATION = V9;  IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = NONE; }
+set_pin_assignment { IO_eth_mdio }    { LOCATION = U10; IOSTANDARD = LVCMOS33; PULLTYPE = NONE; }
+set_pin_assignment { O_led1 }          { LOCATION = D10; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment { O_led2 }          { LOCATION = E10; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment { O_led3 }          { LOCATION = C6; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+set_pin_assignment { O_led4 }          { LOCATION = D6; IOSTANDARD = LVCMOS33; DRIVESTRENGTH = 8; PULLTYPE = PULLDOWN; }
+
+
+# Previous motor/encoder pin groups restored; phases stay A->A, B->B.
+# Logical E1=A/right rear, E2=B/right front, E3=C/left front, E4=D/left rear.
+set_pin_assignment { E1A } { LOCATION = U7; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E1B } { LOCATION = R6; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E2A } { LOCATION = T5; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E2B } { LOCATION = R7; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E3A } { LOCATION = K15; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E3B } { LOCATION = K17; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E4A } { LOCATION = K16; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+set_pin_assignment { E4B } { LOCATION = D9; IOSTANDARD = LVCMOS33; PULLTYPE = PULLUP; }
+ 

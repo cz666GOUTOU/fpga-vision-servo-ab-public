@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<CANConfig>
+    <Config>
+        <FILTER_CNT>0</FILTER_CNT>
+        <RX_DEPTH>8</RX_DEPTH>
+        <TX_DEPTH>8</TX_DEPTH>
+    </Config>
+    <GeneralConfig>
+        <Device>PH1P35MDG324</Device>
+        <IP_ID>17</IP_ID>
+        <Type>PH1_LOGIC_CAN</Type>
+        <Version>1.0</Version>
+        <create_VHDL>false</create_VHDL>
+        <inst>CAN</inst>
+    </GeneralConfig>
+    <GeneratedFiles>
+        <GateVerilog Enable="true">CAN_gate.v</GateVerilog>
+    </GeneratedFiles>
+</CANConfig>

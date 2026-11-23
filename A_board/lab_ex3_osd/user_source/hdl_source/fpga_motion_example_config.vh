@@ -1,0 +1,139 @@
+// Independent demonstration settings; application tuning required.
+`ifndef FPGA_MOTION_THRESH_DEFAULT
+`define FPGA_MOTION_THRESH_DEFAULT 40
+`endif
+`ifndef FPGA_MOTION_MIN_AREA_DEFAULT
+`define FPGA_MOTION_MIN_AREA_DEFAULT 32
+`endif
+`ifndef FPGA_MOTION_HOLD_FRAMES_DEFAULT
+`define FPGA_MOTION_HOLD_FRAMES_DEFAULT 6
+`endif
+`ifndef FPGA_MOTION_MATCH_GAP_DEFAULT
+`define FPGA_MOTION_MATCH_GAP_DEFAULT 12
+`endif
+`ifndef FPGA_MOTION_TRACK_MIN_AREA_DEFAULT
+`define FPGA_MOTION_TRACK_MIN_AREA_DEFAULT 12
+`endif
+`ifndef FPGA_MOTION_MERGE_GAP_DEFAULT
+`define FPGA_MOTION_MERGE_GAP_DEFAULT 4
+`endif
+`ifndef FPGA_MOTION_JUMP_LIMIT_DEFAULT
+`define FPGA_MOTION_JUMP_LIMIT_DEFAULT 12
+`endif
+`ifndef FPGA_MOTION_GAIN_SETTLE_FRAMES_DEFAULT
+`define FPGA_MOTION_GAIN_SETTLE_FRAMES_DEFAULT 6
+`endif
+`ifndef FPGA_MOTION_HIGH_DEFAULT
+`define FPGA_MOTION_HIGH_DEFAULT 40
+`endif
+`ifndef FPGA_MOTION_LOW_DEFAULT
+`define FPGA_MOTION_LOW_DEFAULT 28
+`endif
+`ifndef FPGA_MOTION_STABLE_RATIO
+`define FPGA_MOTION_STABLE_RATIO 80
+`endif
+`ifndef FPGA_MOTION_DRIFT
+`define FPGA_MOTION_DRIFT 3
+`endif
+`ifndef FPGA_MOTION_BG_LOW
+`define FPGA_MOTION_BG_LOW 10
+`endif
+`ifndef FPGA_MOTION_BG_DIFF_LOW
+`define FPGA_MOTION_BG_DIFF_LOW 10
+`endif
+`ifndef FPGA_MOTION_BG_DIFF_MID
+`define FPGA_MOTION_BG_DIFF_MID 14
+`endif
+`ifndef FPGA_MOTION_BG_DIFF_HIGH
+`define FPGA_MOTION_BG_DIFF_HIGH 18
+`endif
+`ifndef FPGA_MOTION_BG_SELECT_LOW
+`define FPGA_MOTION_BG_SELECT_LOW 5'd10
+`endif
+`ifndef FPGA_MOTION_BG_SELECT_MID
+`define FPGA_MOTION_BG_SELECT_MID 5'd14
+`endif
+`ifndef FPGA_MOTION_BG_SELECT_HIGH
+`define FPGA_MOTION_BG_SELECT_HIGH 5'd18
+`endif
+`ifndef FPGA_MOTION_BG_CONFIRM
+`define FPGA_MOTION_BG_CONFIRM 1
+`endif
+`ifndef FPGA_MOTION_LOW_OVERRIDE
+`define FPGA_MOTION_LOW_OVERRIDE 28
+`endif
+`ifndef FPGA_MOTION_START_CONFIRM
+`define FPGA_MOTION_START_CONFIRM 1
+`endif
+`ifndef FPGA_MOTION_STILL_CONFIRM
+`define FPGA_MOTION_STILL_CONFIRM 3
+`endif
+`ifndef FPGA_MOTION_LIGHT_DEADBAND
+`define FPGA_MOTION_LIGHT_DEADBAND 10'sd3
+`endif
+`ifndef FPGA_MOTION_LIGHT_SUPPORT
+`define FPGA_MOTION_LIGHT_SUPPORT 6
+`endif
+`ifndef FPGA_MOTION_LIGHT_COVERAGE
+`define FPGA_MOTION_LIGHT_COVERAGE 2
+`endif
+`ifndef FPGA_MOTION_LIGHT_MAJORITY
+`define FPGA_MOTION_LIGHT_MAJORITY 2
+`endif
+`ifndef FPGA_MOTION_LIGHT_LIMIT
+`define FPGA_MOTION_LIGHT_LIMIT 9'sd40
+`endif
+`ifndef FPGA_MOTION_LIGHT_STEP
+`define FPGA_MOTION_LIGHT_STEP 9'sd1
+`endif
+`ifndef FPGA_MOTION_VOTE
+`define FPGA_MOTION_VOTE 6
+`endif
+`ifndef FPGA_MOTION_BACKGROUND_BLEND
+`define FPGA_MOTION_BACKGROUND_BLEND {gray_d,2'b00}
+`endif
+`ifndef FPGA_MOTION_MOTION_AREA_SCALE
+`define FPGA_MOTION_MOTION_AREA_SCALE ({1'b0,area}+17'd127)>>7
+`endif
+`ifndef FPGA_MOTION_MOTION_AREA_FLOOR
+`define FPGA_MOTION_MOTION_AREA_FLOOR scaled<10 ? 16'd10 : scaled[15:0]
+`endif
+`ifndef FPGA_MOTION_QUIET_X
+`define FPGA_MOTION_QUIET_X dx<11'sd3 && dx> -11'sd3
+`endif
+`ifndef FPGA_MOTION_QUIET_Y
+`define FPGA_MOTION_QUIET_Y dy<11'sd3 && dy> -11'sd3
+`endif
+`ifndef FPGA_MOTION_QUIET_PIPE_X
+`define FPGA_MOTION_QUIET_PIPE_X geom_x_span<11'sd3 && geom_x_span> -11'sd3
+`endif
+`ifndef FPGA_MOTION_QUIET_PIPE_Y
+`define FPGA_MOTION_QUIET_PIPE_Y geom_y_span<11'sd3 && geom_y_span> -11'sd3
+`endif
+`ifndef FPGA_MOTION_TRACK_BLEND
+`define FPGA_MOTION_TRACK_BLEND track_smooth_n
+`endif
+`ifndef FPGA_MOTION_CONSISTENT
+`define FPGA_MOTION_CONSISTENT (uw<=(vw<<1)+10'd3)&&(vw<=(uw<<1)+10'd3)&&     (uh<=(vh<<1)+10'd3)&&(vh<=(uh<<1)+10'd3)&&     ({2'b0,u[49:34]}<=({2'b0,v[49:34]}<<1))&&({2'b0,v[49:34]}<=({2'b0,u[49:34]}<<1))
+`endif
+`ifndef FPGA_MOTION_GEOMETRY_CONSISTENT
+`define FPGA_MOTION_GEOMETRY_CONSISTENT (geom_uw<=(geom_vw<<1)+10'd3)&&(geom_vw<=(geom_uw<<1)+10'd3)&&   (geom_uh<=(geom_vh<<1)+10'd3)&&(geom_vh<=(geom_uh<<1)+10'd3)&&   ({2'b0,geometry_u[49:34]}<=({2'b0,geometry_v[49:34]}<<1))&&   ({2'b0,geometry_v[49:34]}<=({2'b0,geometry_u[49:34]}<<1))
+`endif
+`ifndef FPGA_MOTION_LEGACY_DIFF
+`define FPGA_MOTION_LEGACY_DIFF 8'd40
+`endif
+`ifndef FPGA_MOTION_LEGACY_AREA
+`define FPGA_MOTION_LEGACY_AREA 8
+`endif
+`ifndef FPGA_MOTION_TOP_GAIN_SETTLE
+`define FPGA_MOTION_TOP_GAIN_SETTLE 6
+`endif
+`ifndef FPGA_MOTION_TOP_DIFF
+`define FPGA_MOTION_TOP_DIFF 8'd40
+`endif
+`ifndef FPGA_MOTION_TOP_AREA
+`define FPGA_MOTION_TOP_AREA 32
+`endif
+`ifndef FPGA_MOTION_TOP_TRACK_AREA
+`define FPGA_MOTION_TOP_TRACK_AREA 12
+`endif

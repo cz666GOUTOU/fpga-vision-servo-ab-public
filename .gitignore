@@ -1,0 +1,36 @@
+# Build products, secrets and historical material are outside this edition.
+**/*_Runs*/
+**/tests/
+**/sim/
+**/reference/
+**/references/
+**/backup/
+**/backups/
+**/build/
+**/logs/
+**/__pycache__/
+**/.Xil/
+**/.git/
+*.log
+*.logw
+*.jou
+*.vcd
+*.wdb
+*.fst
+*.vvp
+*.pyc
+*.bit
+*.bin
+*.edf
+*.edn
+*.dcp
+*.bak
+.env
+.env.*
+*.pem
+*.key
+
+# Local deployment configuration and private verification records.
+**/config.local.vh
+**/*_private_profile.vh
+**/.local/

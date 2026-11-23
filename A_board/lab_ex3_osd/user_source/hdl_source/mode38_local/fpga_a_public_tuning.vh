@@ -1,0 +1,52 @@
+// Demonstration tuning only; tune for the application before hardware use.
+`ifndef FPGA_A_SAD_MAX
+`define FPGA_A_SAD_MAX 18'd9216
+`endif
+`ifndef FPGA_A_SAD_MIN_GAP
+`define FPGA_A_SAD_MIN_GAP 18'd160
+`endif
+`ifndef FPGA_A_SAD_MIN_TEXTURE
+`define FPGA_A_SAD_MIN_TEXTURE 8'd20
+`endif
+`ifndef FPGA_A_RANK_FAST_OPERAND
+`define FPGA_A_RANK_FAST_OPERAND {35'd0,rank_fast_operand,1'b0}
+`endif
+`ifndef FPGA_A_EDGE_WEIGHT_SHIFT_EXPR
+`define FPGA_A_EDGE_WEIGHT_SHIFT_EXPR >>3
+`endif
+`ifndef FPGA_A_RANK_GAP_SHIFT_EXPR
+`define FPGA_A_RANK_GAP_SHIFT_EXPR >>4
+`endif
+`ifndef FPGA_A_RANK_GAP_FLOOR
+`define FPGA_A_RANK_GAP_FLOOR 19'd640
+`endif
+`ifndef FPGA_A_GAP_SHIFT_EXPR
+`define FPGA_A_GAP_SHIFT_EXPR >>4
+`endif
+`ifndef FPGA_A_STRICT_SCORE_SHIFT_EXPR
+`define FPGA_A_STRICT_SCORE_SHIFT_EXPR >>2
+`endif
+`ifndef FPGA_A_REFERENCE_LIMIT_SHIFT_EXPR
+`define FPGA_A_REFERENCE_LIMIT_SHIFT_EXPR <<2
+`endif
+`ifndef FPGA_A_WEAK_SCORE_SHIFT_EXPR
+`define FPGA_A_WEAK_SCORE_SHIFT_EXPR >>3
+`endif
+`ifndef FPGA_A_BACKUP_PERIOD_COMPARE_EXPR
+`define FPGA_A_BACKUP_PERIOD_COMPARE_EXPR ==1
+`endif
+`ifndef FPGA_A_LEARN_STRONG_NUM_EXPR
+`define FPGA_A_LEARN_STRONG_NUM_EXPR 5*d+10
+`endif
+`ifndef FPGA_A_LEARN_STRONG_FLOOR_BIAS
+`define FPGA_A_LEARN_STRONG_FLOOR_BIAS 17
+`endif
+`ifndef FPGA_A_LEARN_STRONG_DENOM
+`define FPGA_A_LEARN_STRONG_DENOM 18
+`endif
+`ifndef FPGA_A_LEARN_WEAK_EXPR
+`define FPGA_A_LEARN_WEAK_EXPR (d+8)>>>4
+`endif
+`ifndef FPGA_A_LEARN_SLOW_EXPR
+`define FPGA_A_LEARN_SLOW_EXPR (d+32)>>>6
+`endif
